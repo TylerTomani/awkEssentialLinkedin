@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-02-creatingUserVars</title>
+    <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body>
+    <a tabindex="1" href="../../awkEssentialTraining.html">home</a>
+    <h1>04-02-creatingUserVariables</h1>
+    <div class="flex-container">
+        <div class="flex-item">
+            <p>
+                &emsp;Variables are case sensitive, and all variables are global.
+                <br> This means you cannot assign new values to already declared
+                <br>variables.
+            </p>
+        </div>
+
+
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+            <p>
+                &emsp;If you want to print user-defined variables right away,
+                <br>you must use <code>BEGIN</code>
+            </p>
+        </div>
+        <div class="flex-item">
+            <code class="code">
+                $ awk '{hi="Hello";cya="Goodbye"; print hi cya}'
+                <br>
+            </code>
+            <p>
+                This will not print anything on the first line of output. So use <code>BEGIN</code>.
+            </p>
+            <code class="code">
+                $ awk 'BEGIN{hi="Hello";cya="Goodbye"; print hi cya}' <br>
+                Hello Goodbye
+            </code>
+        </div>
+
+    </div>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <p>
+                &emsp;Variables are created as soon as you use them, so
+                <br>if you accidently mispell a variable in a print statement,
+                <br>awk will not produce an error because a new variable will be
+                <br> created.
+            </p>
+        </div>
+        <div class="flex-item">
+            <code class="code">
+                $ awk 'BEGIN{hi="Hello";cya="Goobye"; print <span class="bv">ih</span> cya}' <br>
+                Goodbye
+            </code>
+            <p><code class="bv">ih</code> was created as an empty string in the print statement</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+            <p>
+                We can assign input to user defined variables
+            </p>
+        </div>
+        <div class="flex-item">
+            <code class="code">
+                $ awk '{input1=$1;input2=$2;print input1,input2}' <br>
+                word1 word2 <br>
+                word1 word2
+            </code>
+        </div>
+    </div>
+    <hr>
+    <h2>Strings and Numbers</h2>
+    <div class="flex-container">
+        <div class="flex-item">
+            <h2>Numbers in awk</h2>
+            <p>
+                &emsp;awk handles variables as strings and numbers quite nicely.
+            </p>
+            <code class="code">
+                $ awk 'BEGIN{a=1;b=2; print a + b}' <br>
+                3
+            </code>
+            <p>
+                &emsp;We can concate numbers as well,
+            </p>
+            <code class="code">
+                $ awk 'BEGIN{a=1;b=2; print a , b}' <br>
+                12
+            </code>
+        </div>
+        <div class="flex-item">
+            <h2>Strings with Numbers</h2>
+            <div class="flex-item">
+                <p>
+                    &emsp;If you attempt math on a string, awk will treat the string
+                    <br> as a zero
+                </p>
+                <code class="code">
+                    $ awk 'BEGIN{a=1;b="Numner"; print a + b}' <br>
+                    1
+                </code>
+                <p>
+                    but you can concatenate strings with numbers
+                </p>
+                <code class="code">
+                    $ awk 'BEGIN{a=1;b="Numner"; print a b}' <br>
+                    1Number
+                </code>
+            </div>
+
+        </div>
+
+    </div>
+<hr>
+    <div class="flex-container">
+        <div class="flex-item">
+            <h2>Use the number <q>0</q> from a string</h2>
+            <p>
+                &emsp;To use a string as 0 just add 0
+            </p>
+            <code class="code">
+                $ awk 'BEGIN{print "number" + 1}' <br>
+                0
+            </code>
+        </div>
+        <div class="flex-item">
+            <h2>Force number to be a string</h2>
+            <p>
+                &emsp;Concatenate anything string or number to force it into being
+                <br> a string;
+            </p>
+            <code class="code">
+                $ awk 'BEGIN{num=1; print num + ""}' <br>
+                1
+            </code>
+            <p>This forces the number 1 to be treated as a string</p>
+        </div>
+
+    </div>
+    <hr>
+    <h2>Complicated example</h2>
+    <div class="flex-container">
+        <div class="flex-item">
+            <h3>concatenate and math</h3>
+            <p>
+                &emsp;This example with multiply first then concatenate
+            </p>
+            <code class="code">
+                awk 'BEGIN{a=1;b=2;c=3; print a b * c}' <br>
+                16
+            </code>
+            <p>
+                Put the a and b in () <code>(a b)</code> to force concatenation first
+            </p>
+        </div>
+        <div class="flex-item">
+
+            <h3 class="important">Accepting strings as numbers</h3>
+            <p class="important">I can't get this working with BEGIN</p>
+            <p>
+                &emsp;A string can be an integer by adding zero 0, and as long
+                <br> as the numbered string is in quotes
+                <pre>awk 'BEGIN{num="\" 102\""; print num + 0}'</pre>
+                <br>This examples below works with stdin prompt
+            </p>
+            <code class="code">
+                $ awk '{print "\"" $1 "\" + 0 = " $1 + 0}' <br>
+                202 <br>
+                "202" + 0 = 202 <br>
+                6.5 <br>
+                "6.5" + 0 = 6.5 <br>
+                4e3 <br>
+                "4e3" + 0 = 4000
+                0023 <br>
+                "0023" + 0 = 23
+            </code>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>
+                    &emsp; If you are treating a string as a number and if a string begins with a number but is followed by
+                    <br> non-numeric character, the non-numeric characters will be ignored.
+                    <br>
+                    <br>And if a string containing numbers starts with non-numerica characters, it will
+                    <br> be treated as a 0
+                </p>
+            </div>
+            <div class="flex-item">
+                <code class="code">
+                    $ awk '{print "\"" $1 "\" + 0 = " $1 + 0}' <br>
+                    44ayeaye <br>
+                    "44ayeaye" + 0 = 44 <br>
+                    ayeaye33 <br>
+                    "ayeaye33" + 0 = 0
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <footer tabindex="2"></footer>
+</body>
+</html>

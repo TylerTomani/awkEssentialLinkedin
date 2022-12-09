@@ -1,0 +1,25 @@
+/* /Colors  */
+.problem {
+    color: red
+}
+
+.r,
+.b,
+.v {
+    font-weight: 600;
+}
+
+.r {
+    color: red;
+}
+
+.b {
+    color: rgb(110, 181, 205);
+}
+
+.v {
+    color: magenta;
+}
+.w {
+    color:white
+}
