@@ -23,3 +23,9 @@
 .w {
     color:white
 }
+.bv {
+    border: 2px solid magenta;
+}
+.o {
+    color: orange;
+}

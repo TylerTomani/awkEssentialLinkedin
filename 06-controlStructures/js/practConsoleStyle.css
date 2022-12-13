@@ -1,0 +1,12 @@
+.console-container{
+    background-color: blue;
+    padding: 1rem;
+    display: flex;
+}
+.console-container-item {
+    flex-basis: 45%;
+}
+
+footer {
+    margin-top: 10rem;
+}

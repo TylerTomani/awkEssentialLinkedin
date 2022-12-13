@@ -1,7 +1,55 @@
+.score-example{
+    max-width: 500px;
+    font-size: 1rem;
+}
+
+
 * {
     margin: 0;
     padding: 0;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.flex {display: flex;}
+.flex-container {
+    /* border: 1px solid orange; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1% 0;
+    padding: 2.5% 1%;
+    /* font-size: .75rem; */
+}
+
+.flex-item {
+    /* border: 1px solid blue; */
+    flex-basis: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex-container>.flex-item.text-top {
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin: 0 1%;
+    padding: 0 1%
+}
+
+.text-top {
+    justify-content: flex-start;
+}
+
+.flex-item>p {
+    font-size: .9rem;
+    line-height: 1.4rem;
+    padding: 0 1%;
+    margin: 0 1%;
+}
+
+.flex-item>ul {
+    font-size: .85rem;
+    margin: .5% 0 0 1%;
 }
 .flex-col > .flex-item>ul {
     text-align: center;
@@ -32,46 +80,60 @@ h2 {
 .vert-start {
     align-items: flex-start;
 }
-.flex-container {
-    /* border: 1px solid orange; */
-    display: flex;
-    flex-wrap: wrap;
+.justify-start {
     justify-content: flex-start;
-    align-items: center;
-    margin: 1% 0;
-    padding: 2.5% 1%;
-    /* font-size: .75rem; */
 }
-
-.flex-item {
-    /* border: 1px solid blue; */
-    flex-basis: 48%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.align-center {
     align-items: center;
 }
 
-.flex-container > .flex-item.text-top{
-    align-self: flex-start;
+.align-start {
+    align-items: flex-start;
+    text-align: start;
+}
+.justify-self-start {
     justify-self: flex-start;
-    margin: 0 1%;
-    padding: 0 1%
+    /* text-align: start; */
 }
-.text-top {
-    justify-content: flex-start;
+.align-self-center {
+    align-self: center;
+    text-align: center;
+}
+.m-center {
+    margin: 0 25%;
+    width: 80vw;
 }
 
-.flex-item > p {
-    font-size: .9rem;
-    line-height: 1.4rem;
+
+.m-0 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}
+.code-strict-width-center {
+    width: 400px;
+}
+.m-1 {
+    margin: 2% 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.p-1 {
     padding: 0 1%;
-    margin: 0 1%;
 }
-.flex-item > ul {
-    font-size: .85rem;
-    margin: .5% 0 0 1%;
+.p-top-1 {
+    padding: 1rem;
 }
+
+.p-2 {
+    padding: 0 2%;
+}
+
+
 img {
     width: 100%;
     margin: 0 1%;
@@ -81,21 +143,7 @@ video {
     width: 100%;
     margin: 0 1%;
 }
-.m-0 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin:  0;
-}
-.m-1 {
-    margin: 2% 0;
-}
-.p-0 {
-    padding: 0;
-}
-.p-1 {
-    padding: 0 1%;
-}
+
 h3.code {
     display: inline-block;
     padding: .2rem;
@@ -128,13 +176,7 @@ h3 {
 
 
 
-.m-center {
-    margin: 0 25%;
-}
-.m-center > code{
-    width: 80vw;
-    margin-left: -30%;
-}
+
 .m-top {
     /* display: inline-block; */
     margin-top: 2.5%;
@@ -155,8 +197,12 @@ h3 {
 .sm-code {
     font-size: .9rem;
     min-width: 350px;
-    text-overflow: nowrap;
-    
+    text-overflow: nowrap;   
+}
+.x-sm-code {
+    font-size: .8rem;
+    min-width: 350px;
+    /* text-overflow: nowrap;    */
 }
 .flex-item-45 {
     width: 45%;
@@ -179,14 +225,33 @@ h3 {
     margin-top: 2.5%;
     min-width: 500px;
 }
+code.inline-block {
+    width: 100%;
+}
+.inline-block {
+    display: inline-block;
+}
+.inline {
+    display: inline;
+}
+.list-style-none {
+    list-style-type: none;
+}
+.border-black {
+    border: 1px solid black;
+}
+.lg-txt {
+    font-size: 1.1rem;
+}
+.sm-txt {
+    font-size: .9rem;
+}
 @media screen and (max-width:821px) {
     .flex-item-45 {
         /* display: flex; */
         /* width: 100%; */
         margin: 0;
-    }
-
-    
+    }  
 }
 @media screen and (max-width:590px){
     .flex-container {
@@ -206,9 +271,14 @@ h3 {
         width: 400px;
         margin: 0 ;
     }
-    
+    .score-example {
+        /* font-size: .5rem; */
+    }
 }
 @media screen and (max-width:500px) {
+    .score-example {
+        /* font-size: .5rem; */
+    }
     video {
         width: 350px;
         margin: 0;

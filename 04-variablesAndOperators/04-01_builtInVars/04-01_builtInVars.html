@@ -11,9 +11,9 @@
     <h2 tabindex="1" class="lesson-header">04-01-builtInVariables</h2>
     <h2>built-in awk variables</h2>
     <!-- variable list -->
-    <div class="flex-col">
+    <div tabindex="1" class="flex-col">
         <div class="flex-item text-top">
-            <ul>
+            <ul class="ul-inline">
                 <li><span class="code">NR</span> - record/line number </li>
                 <li><span class="code">NF</span> - number of fields on each record</li>
                 <li><span class="code">FS</span> - input field seperator</li>
@@ -57,7 +57,7 @@
         <h4>ex2.txt</h4>
             <code  class="code">
                 This file contains lines of text.
-                <br> Each line of text is differnt.
+                <br> Each line of text is different.
                 <br> If this text is up, Then this
                 <br> text is down.
                 <br> Awk is a great program.
@@ -78,7 +78,7 @@
             <code>
                 $ awk '{<span class="bv">print NF , $0</span>}'
                <br> 6 This file contains lines of text.
-               <br> 6 Each line of text is differnt.
+               <br> 6 Each line of text is different.
                <br> 7 If this text is up, Then this
                <br> 3 text is down.
                <br> 5 Awk is a great program.
@@ -96,20 +96,26 @@
             <code >
                 $ awk "NF==6"{print NF, $0}' ex2.txt' <br>
                 6 This file contains lines of text. <br>
-                6 Each line of text is differnt. <br>
+                6 Each line of text is different. <br>
             </code>
         </div>
         <div class="code">
             <code>
                 $ awk 'NR==2{print NR , $0}' ex2.txt <br>
-                2 Each line of text is differnt.
+                2 Each line of text is different.
             </code>
         </div>
     </div>
     <h2><code>FNR</code> - file name</h2>
+    <div tabindex="1" class="flex-col">
+        <p>If you include multiple input files, awk concatenates them together </p>
+        <p> &emsp;We can find out which file is currently being processed by using the
+            <br> <code>FNR</code> built-in variable along with <code>FILENAME</code>.
+            <br> This will show the record number for concatenated files and record number within each
+        </p>
+    </div>
     <div class="flex-container">
         <div tabindex="1" class="flex-item">
-            <p>If you include multiple input files, awk concatenates them together </p>
             <code class="code">
                 $ awk '{print NR , $0}' ex2.txt names.txt
                 <br> 1 This file contains lines of text.
@@ -130,10 +136,7 @@
             </code>
         </div>
         <div tabindex="1" class="flex-item">
-            <p> &emsp;We can find out which file is currently being processed by using the
-                <br> <code>FNR</code> built-in variable along with <code>FILENAME</code>.
-                <br> This will show the record number for concatenated files and record number within each
-            </p>
+            
             <code class="code">
                 $ awk '{print NR , <span class="bv">FILENAME</span> , <span class="bv">FNR</span> , $0}' ex2.txt names.txt
                 <br> 1 ex2.txt 1 This file contains lines of text.
@@ -156,13 +159,17 @@
 
     </div>
 <hr>
-<h2 tabindex="1">Difficult Concepts</h2>
-<p>
-    &emsp;($0 is the record number) Anything else after the dollar sign represents a field, such as $1, $2, etc...
-    <br>But, put anything after the dollar sign
-</p>
+<div tabindex="1" class="flex-col">
+    <h2>Difficult Concepts</h2>
+    <p>
+        &emsp;($0 is the record number) Anything else after the dollar sign represents a field, such as $1, $2, etc...
+        <br>But, put anything after the dollar sign
+    </p>
+    
+</div>
+
 <h3>Examples</h3>
-<div class="align-c code">
+<div tabindex="1" class="align-c code">
     <h4>ex2.txt</h4>
         <code>
             This file contains lines of <span class="o">text</span>.
@@ -217,8 +224,8 @@
     <div tabindex="1" class="flex-container">
         <div class="flex-item">
             <p>
-                &emsp;Tricky bit, if we type in a field number such as <code>$1</code>
-                <br>after the <code>$</code> whatever value is there, is then passed  <br> into the <code>$</code>.
+                &emsp;Tricky bit, if we type in a field number such as <span class="code">$1</span>
+                after the <code>$</code>; whatever value is there, is then passed into the <code>$</code>.
                 <br>&emsp;If the number 3 is in the first field, awk will return the third field
             </p>
             

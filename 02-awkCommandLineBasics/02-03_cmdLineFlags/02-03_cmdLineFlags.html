@@ -145,7 +145,60 @@
                 <br> Awk is a great program.
                 <br> Life is better when Learning new things.
             </code>
+    </div>
+    <!--###########   | pipe into awk ###########-->
+    <h2>Useful applications of awk</h2>
+    <h3><code>|</code> pipe into awk</h3>
+    <div tabindex="1" class="flex-col">
+        <p>
+            &emsp;It is very useful to pipe commands into awk to find certain fields
+        </p>
+        <code class="code">
+            $ uptime | awk '{print NF $0}'
+            <br> 11 1:51 up 14 mins, 2 users, load averages: 2.67 3.23 2.76
+        </code>
+        <code class="code">
+            $ uptime | awk '{print $6};
+            <br>users,
+        </code>        
+    </div>
+    <!--###########   send output of awk to elsewhere ###########-->
+    <h3>send output of awk to elsewhere</h3>
+    <div tabindex="1" class="flex-col">
+        <p>
+            &emsp;Send output with <code>></code> or <code>|</code>
+        </p>
+    </div>
+    <div tabindex="1" class="flex-container">
+        <div class="flex-item">
+            <code class="code sm-code">
+$ awk '{print $2}' names2.txt > lastname.txt
+<br>            last-name
+<br>            Bobedos
+<br>            McCallan
+<br>            Trevino
+<br>            Everly
+<br>            Carmichael
+            </code>
         </div>
+        <div class="flex-item ">
+            <code class="code sm-code">
+
+                $ awk '{print NF , $0}' ex2.txt | sort -n
+                <br>            3 text is down.
+                <br>            5 Awk is a great program.
+                <br>            6 This file contains lines of text.
+                <br>            6 Each line of text is differnt.
+                <br>            7 If this text is up, Then this
+                <br>            7 Life is better when Learning new things.
+                
+            </code>
+        </div>
+            
+    </div>
+    
+    
+
 
 </body>
 </html>

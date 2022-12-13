@@ -157,7 +157,7 @@
         <div class="flex-item">
             <p tabindex="1">
                 &emsp;Here, we tell awk to find a line/record that has 4 fields
-                by typing <code>NF==4</code> before the {action}
+                by typing <code>NF=4</code> before the {action}
             </p>
             <p>
                 &emsp;If no records/lines contains the set number of fields, nothing will be returned</p>
@@ -166,7 +166,7 @@
              
         <div class="flex-item code">
             <code>
-                $ awk 'NF==4{print NF, $0}' ex1.txt <br>
+                $ awk 'NF=4{print NF, $0}' ex1.txt <br>
                 4 field1 field2 filed3 field4
             </code>
             
@@ -182,11 +182,30 @@
         </div>
         <div class="flex-item code">
             <code>
-                $ awk 'NF==4{print $0}' ex1.txt <br>
+                $ awk 'NF=4{print $0}' ex1.txt <br>
                 4 field1 field2 filed3 field4
             </code>
         </div>
     </div>
+    <div class="flex-col">
+        <h3>Use pattern without the actions</h3>
+        <div tabindex="1" class="flex-container">
+            <div class="flex-item">
+                <p>
+                    &emsp;It is possible to omit the action and use only the patter
+                </p>
+            </div>
+            <div class="flex-item code">
+                <code>
+                    $ awk 'NF=4' ex1.txt
+                    field1 field 2 field3
+                    The dog ate an
+                </code>
+            </div>
+            
+        </div>
+    </div>
+    
     <hr>
     <h2>Combine actions and add text to output</h2>
     <h2>text file example</h2>
@@ -233,7 +252,7 @@
         </div>
         <div class="flex-item code" >
             <code>
-                awk 'NF==3' ex2.txt
+                awk 'NF=3' ex2.txt
                 <br>text is down
             </code>
         </div>

@@ -36,10 +36,14 @@
             <p>
                 &emsp;In this example,
                 <br> <code class="">$ awk '{FS=","<span class="w">;</span> print $2}'</code>
-                 the field seperator <code class="code-sm">,</code> will not affect the first line/record.
-                awk performs the first statement <span class="code">FS=","</span> before the  
+                 the field seperator <code class="code-sm">,</code> will not affect the first
+                line/record because awk divides the input into records and fields BEFORE calling
+                each action.
+            </p>
+            <p>
+                &emsp;awk performs the first statement <span class="code">FS=","</span> before the
                 <span class=" code w">;</span>, then peforms <code>print</code> after.
-                It does this all in one step, so the field seperator is not done being initiated unitl after 
+                It does this all in one step, so the field seperator is not done being initiated unitl after
                 the whole program runs.
             </p>
             
